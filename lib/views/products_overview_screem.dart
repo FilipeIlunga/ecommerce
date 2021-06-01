@@ -6,6 +6,19 @@ class ProductOverviewScren extends StatelessWidget {
   final List<Product> leadedProducts = DUMMY_PRODUCTS;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Minha Loja"),
+      ),
+      body: GridView.builder(
+          itemBuilder: (context, index) => Text(leadedProducts[index].title),
+          itemCount: leadedProducts.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+          )),
+    );
   }
 }
