@@ -7,6 +7,9 @@ class Products with ChangeNotifier {
 
   //retornar uma copia e não a lista original
   List<Product> get items => [..._items];
+  List<Product> get favoriteItems {
+    return _items.where((prod) => prod.isFavorite).toList();
+  }
 
   void addProduct(Product product) {
     _items.add(product);
