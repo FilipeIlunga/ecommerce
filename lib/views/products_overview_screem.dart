@@ -3,13 +3,28 @@ import 'package:shop/widgets/product_Grid.dart';
 
 enum FilterOptions { Favorite, All }
 
-class ProductOverviewScren extends StatelessWidget {
+class ProductOverviewScren extends StatefulWidget {
+  @override
+  _ProductOverviewScrenState createState() => _ProductOverviewScrenState();
+}
+
+class _ProductOverviewScrenState extends State<ProductOverviewScren> {
+  bool _showFavoriteOnly = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Minha Loja"), actions: <Widget>[
         PopupMenuButton(
-            onSelected: (FilterOptions selectedValue) {},
+            onSelected: (FilterOptions selectedValue) {
+              setState(() {
+                if (selectedValue == FilterOptions.Favorite) {
+                  _showFavoriteOnly = true;
+                } else {
+                  _showFavoriteOnly = false;
+                }
+              });
+            },
             itemBuilder: (_) => [
                   PopupMenuItem(
                     child: Text('Todos'),
@@ -20,7 +35,7 @@ class ProductOverviewScren extends StatelessWidget {
                       value: FilterOptions.Favorite)
                 ])
       ]),
-      body: ProductGrid(),
+      body: ProductGrid(_showFavoriteOnly),
     );
   }
 }
