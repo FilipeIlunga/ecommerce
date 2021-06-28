@@ -12,3 +12,10 @@ class CartItem {
       @required this.quantity,
       @required this.price});
 }
+
+class Cart with ChangeNotifier {
+  Map<String, CartItem> _items;
+  Map<String, CartItem> get item {
+    return {..._items};
+  }
+}
