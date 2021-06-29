@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop/providers/cart.dart';
 import 'package:shop/widgets/badge.dart';
 import 'package:shop/widgets/product_Grid.dart';
 
@@ -35,9 +37,13 @@ class _ProductOverviewScrenState extends State<ProductOverviewScren> {
                       child: Text('Somente Favoritos'),
                       value: FilterOptions.Favorite),
                 ]),
-        Badge(
-            value: "2",
-            child: IconButton(onPressed: null, icon: Icon(Icons.shopping_cart)))
+        Consumer<Cart>(
+          child: IconButton(onPressed: null, icon: Icon(Icons.shopping_cart)),
+          builder: (context, cart, child) => Badge(
+            value: cart.itemCount.toString(),
+            child: child,
+          ),
+        )
       ]),
       body: ProductGrid(_showFavoriteOnly),
     );
