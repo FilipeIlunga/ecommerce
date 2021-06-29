@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/widgets/badge.dart';
 import 'package:shop/widgets/product_Grid.dart';
 
 enum FilterOptions { Favorite, All }
@@ -34,7 +35,9 @@ class _ProductOverviewScrenState extends State<ProductOverviewScren> {
                       child: Text('Somente Favoritos'),
                       value: FilterOptions.Favorite),
                 ]),
-        IconButton(onPressed: null, icon: Icon(Icons.shopping_cart))
+        Badge(
+            value: "2",
+            child: IconButton(onPressed: null, icon: Icon(Icons.shopping_cart)))
       ]),
       body: ProductGrid(_showFavoriteOnly),
     );
