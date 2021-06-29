@@ -32,8 +32,9 @@ class _ProductOverviewScrenState extends State<ProductOverviewScren> {
                   ),
                   PopupMenuItem(
                       child: Text('Somente Favoritos'),
-                      value: FilterOptions.Favorite)
-                ])
+                      value: FilterOptions.Favorite),
+                ]),
+        IconButton(onPressed: null, icon: Icon(Icons.shopping_cart))
       ]),
       body: ProductGrid(_showFavoriteOnly),
     );
