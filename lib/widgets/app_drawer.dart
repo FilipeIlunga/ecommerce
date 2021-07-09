@@ -11,7 +11,10 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(children: [
-        AppBar(title: Text("Bem vindo Usuário")),
+        AppBar(
+          title: Text("Bem vindo Usuário"),
+          automaticallyImplyLeading: false,
+        ),
         Divider(),
         ListTile(
             leading: Icon(Icons.shop),
